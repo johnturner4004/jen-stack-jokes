@@ -35,7 +35,11 @@ let jokes = [
 ];
 
 function addJoke(anotherJoke) {
-  jokes.push(anotherJoke);
+  jokes.push({
+    anotherJoke: anotherJoke.whoseJoke,
+    jokeQuestion: anotherJoke.jokeQuestion,
+    punchLine: anotherJoke.punchLine
+  });
 }
 
 // serve back static files

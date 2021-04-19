@@ -11,13 +11,46 @@ function jokeIn() {
     let whoseJoke = $('#whoseJokeIn').val();
     let jokeQuestion = $('#questionIn').val();
     let punchLine = $('#punchlineIn').val();
-    let joke = [{
+    let joke = ({
         whoseJoke: whoseJoke,
         jokeQuestion: jokeQuestion,
-        puhcnLine: punchLine
-    }];
+        punchLine: punchLine
+    });
     console.log('jokeIn():', joke);
     $('#whoseJokeIn').val('');
     $('#questionIn').val('');
     $('#punchlineIn').val('');
+    $.ajax({
+        method: 'POST',
+        url: '/jokes',
+        data: joke
+    })
+    .then(function (response) {
+        console.log('Response from server...', response);
+        updateList();
+    })
+    .catch(function(error) {
+        console.log('Error from server...', error);
+        alert('Could not post jokes from the server');
+    })
+}
+
+function updateList() {
+    $.ajax({
+        method: 'GET',
+        url: '/jokes'
+    })
+    .then(function(response) {
+        console.log('Get response from server...', response);
+        updateDisplay(response);
+    })
+    .catch(function(error) {
+        console.log('Get error from server...', error);
+        alert('Could not get jokes from server');
+    })
+}
+
+function updateDisplay(jokeList) {
+    console.log(jokeList);
+    
 }

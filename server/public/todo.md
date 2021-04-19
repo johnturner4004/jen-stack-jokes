@@ -8,6 +8,7 @@
     jokeQuestion:
     punchLine:
   }]
+  [ ] - clear input fields
 
 [ ] - displya current jokes to dom
   [ ] - below the inputs on the DOM

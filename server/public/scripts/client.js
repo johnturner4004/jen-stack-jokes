@@ -51,6 +51,13 @@ function updateList() {
 }
 
 function updateDisplay(jokeList) {
-    console.log(jokeList);
+    for(let i = 0; i < jokeList.length; i++) {
+        $(outputDiv).append(`
+        <p>Whose joke: ${jokeList[i].whoseJoke}</p>
+        <p>Question: ${jokeList[i].jokeQuestion}</p>
+        <p>Punch Line: ${jokeList[i].punchLine}</p>
+        <p>&nbsp</p>
+        `);
+    }
     
 }

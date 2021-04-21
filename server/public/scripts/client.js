@@ -1,13 +1,17 @@
 console.log('client.js sourced');
 
 $( document ).ready( onReady );
-
+//this will print a message to ensure jQuery is linked correctly this will also make
+// the button to add jokes and the jokeIn function available for use when the page is
+// loaded
 function onReady() {
     console.log('DOM ready');
     $('#addJokeButton').on('click', jokeIn);
     updateList();
 }
 
+//this will take user input from the DOM and use ajax to send it to server.js
+//this will then clear the input fields so another joke can be added.
 function jokeIn() {
     let whoseJoke = $('#whoseJokeIn').val();
     let jokeQuestion = $('#questionIn').val();
@@ -44,6 +48,8 @@ function jokeIn() {
     })
 }
 
+//this function retrieves the entire joke list from the server and sends it to the
+//updateDisplay function
 function updateList() {
     $.ajax({
         method: 'GET',
@@ -59,6 +65,7 @@ function updateList() {
     })
 }
 
+//this function will take an array of jokes and print them to the DOM
 function updateDisplay(jokeList) {
     for(let i = 0; i < jokeList.length; i++) {
         $(outputDiv).append(`

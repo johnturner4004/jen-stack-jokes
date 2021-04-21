@@ -36,7 +36,7 @@ let jokes = [
 
 function addJoke(anotherJoke) {
   jokes.push({
-    anotherJoke: anotherJoke.whoseJoke,
+    whoseJoke: anotherJoke.whoseJoke,
     jokeQuestion: anotherJoke.jokeQuestion,
     punchLine: anotherJoke.punchLine
   });

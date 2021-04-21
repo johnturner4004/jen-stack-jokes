@@ -5,12 +5,21 @@ $( document ).ready( onReady );
 function onReady() {
     console.log('DOM ready');
     $('#addJokeButton').on('click', jokeIn);
+    updateList();
 }
 
 function jokeIn() {
     let whoseJoke = $('#whoseJokeIn').val();
     let jokeQuestion = $('#questionIn').val();
     let punchLine = $('#punchlineIn').val();
+    if (jokeQuestion === '') {
+        alert(`Please fill out all required fields`)
+        return;
+    }
+    if (punchLine === '') {
+        alert(`Please fill out all required fields`)
+        return;
+    }
     let joke = ({
         whoseJoke: whoseJoke,
         jokeQuestion: jokeQuestion,

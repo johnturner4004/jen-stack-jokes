@@ -6,6 +6,8 @@ const PORT = 5000;
 // use bodyParser.urlencoded throughout the app with thi–s:
 app.use(bodyParser.urlencoded({ extended: true }));
 
+
+//this is a starting array of jokes so there is something to initially load to the DOM
 let jokes = [
   {
     whoseJoke: "Danny",
@@ -34,6 +36,7 @@ let jokes = [
   }
 ];
 
+//this function is used to add new jokes to the server
 function addJoke(anotherJoke) {
   jokes.push({
     whoseJoke: anotherJoke.whoseJoke,
@@ -42,9 +45,10 @@ function addJoke(anotherJoke) {
   });
 }
 
-// serve back static files
+// this sets up a static server
 app.use(express.static('server/public'));
 
+//this accepts jokes from the client.js and sends them to addJoke();
 app.post('/jokes', (req, res) => {
   let newJoke = req.body;
   addJoke(newJoke);
@@ -52,6 +56,7 @@ app.post('/jokes', (req, res) => {
   res.sendStatus(201);
 })
 
+// this gives the array back to client.js to be printed to the DOM
 app.get('/jokes', (req, res) => {
   console.log('Request for output...', jokes);
   res.send(jokes);
